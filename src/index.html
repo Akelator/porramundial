@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>PORRA EUROCOPA</title>
+  <script>
+    document.write('<base href="' + document.location + '" />');
+
+  </script>
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <link rel="icon"
+        type="image/x-icon"
+        href="favicon.ico">
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // TODO: Implement getParameterByName()
+      // Get the action to complete.
+      var mode = getParameterByName('mode');
+      // Get the one-time code from the query parameter.
+      var actionCode = getParameterByName('oobCode');
+      // (Optional) Get the continue URL from the query parameter if available.
+      var continueUrl = getParameterByName('continueUrl');
+      // (Optional) Get the language code if available.
+      var lang = getParameterByName('lang') || 'en';
+
+      // Configure the Firebase SDK.
+      // This is the minimum configuration required for the API to be used.
+      var config = {
+        'apiKey': 'AIzaSyBvkbWNniaQM7MsNgzcydo5aBXkQ3Cqc_I' // Copy this key from the web initialization
+        // snippet found in the Firebase console.
+      };
+      var app = firebase.initializeApp(config);
+      var auth = app.auth();
+
+      // Handle the user management action.
+      switch (mode) {
+        case 'resetPassword':
+          // Display reset password handler and UI.
+          handleResetPassword(auth, actionCode, continueUrl, lang);
+          break;
+        case 'recoverEmail':
+          // Display email recovery handler and UI.
+          handleRecoverEmail(auth, actionCode, lang);
+          break;
+        case 'verifyEmail':
+          // Display email verification handler and UI.
+          handleVerifyEmail(auth, actionCode, continueUrl, lang);
+          break;
+        default:
+          // Error: invalid mode.
+      }
+    }, false);
+
+    function handleVerifyEmail(auth, actionCode, continueUrl, lang) {
+      // Localize the UI to the selected language as determined by the lang
+      // parameter.
+      // Try to apply the email verification code.
+      auth.applyActionCode(actionCode).then(function (resp) {
+        // Email address has been verified.
+
+        // TODO: Display a confirmation message to the user.
+        // You could also provide the user with a link back to the app.
+
+        // TODO: If a continue URL is available, display a button which on
+        // click redirects the user back to the app via continueUrl with
+        // additional state determined from that URL's parameters.
+      }).catch(function (error) {
+        // Code is invalid or expired. Ask the user to verify their email address
+        // again.
+      });
+    }
+
+    function getParameterByName(name) {
+      name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+      var regexS = "[\\?&]" + name + "=([^&#]*)";
+      var regex = new RegExp(regexS);
+      var results = regex.exec(window.location.href);
+      if (results == null)
+        return "";
+      else
+        return decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+  </script> -->
+</head>
+
+<body>
+  <app-root></app-root>
+</body>
+
+
+</html>

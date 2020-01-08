@@ -1,0 +1,10 @@
+@import "shared";
+
+body {
+  @include fixed-size(100%, 100vh);
+  padding: 0;
+  margin: 0;
+  overflow: hidden !important;
+  -webkit-font-smoothing: antialiased !important;
+  user-select: none !important;
+}

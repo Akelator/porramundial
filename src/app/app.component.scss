@@ -1,0 +1,19 @@
+@import "../scss/globals/shared";
+
+:host {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  @include fixed-size(100%, 100%);
+}
+
+tool-bar {
+  @include fixed-size(100%, 60px);
+  z-index: 1;
+}
+
+.content {
+  @include fixed-size(100%, calc(100% - 60px));
+  z-index: 0;
+}

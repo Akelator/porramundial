@@ -1,0 +1,15 @@
+@import "../../../../scss/globals/shared";
+
+:host {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  @include fixed-size(100%, 100%);
+}
+
+.info {
+  padding-top: 40px;
+  font-family: robotoRegular;
+  font-size: 20px;
+}
