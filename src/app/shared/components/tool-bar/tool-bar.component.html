@@ -1,4 +1,14 @@
-<div class="title"
-     (click)="onBack()">TOOLBAR CACA</div>
-<button (click)="onLogin()">LOGIN</button>
-<button (click)="onSignUp()">SIGN UP</button>
+<div class="toolbar-content">
+  <div class="title"
+       (click)="onBack()">PORRAEUROCOPA</div>
+  <ng-container *ngIf="!userData">
+    <button (click)="onLogIn()">LOGIN</button>
+    <button (click)="onSignUp()">SIGN UP</button>
+  </ng-container>
+  <ng-container *ngIf="userData">
+    <div (click)="onProfile()">{{userData.displayName || userData.email}}</div>
+    <img class="profile-img"
+         src="https://img.huffingtonpost.com/asset/5c8a9f94230000d504235ba4.jpeg?ops=scalefit_630_noupscale">
+    <button (click)="onLogOut()">CERRAR SESION</button>
+  </ng-container>
+</div>

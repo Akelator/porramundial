@@ -1,0 +1,26 @@
+<div class="bi-popup__bg"
+     [class.visible]="isVisible$ | async"></div>
+<div class="bi-popup__container"
+     [class.visible]="isVisible$ | async">
+  <ng-container *ngIf="(data$ | async) as data">
+    <div *ngIf="data.title"
+         class="bi-popup__title"
+         [class.error]="data.title === 'Error'">
+      {{data.title}}
+    </div>
+    <div *ngIf="data.content"
+         class="bi-popup__content"
+         [innerHTML]="data.content">
+    </div>
+    <div class="bi-popup__actions d-flex justify-content-end">
+      <button *ngIf="data.options"
+              (click)="onCancel()">
+        CANCEL
+      </button>
+      <button (click)="onAccept()">
+        OK
+      </button>
+
+    </div>
+  </ng-container>
+</div>

@@ -5,6 +5,16 @@
   align-items: center;
   justify-content: center;
   @include fixed-size(100%, 100%);
-  background: #dd2b19;
+  background: $bg_red;
+}
+.toolbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @include fixed-size($main_width, 100%);
   color: white;
+}
+.profile-img {
+  width: 40px;
+  height: 40px;
 }

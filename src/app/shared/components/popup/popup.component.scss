@@ -1,0 +1,54 @@
+@import "../../../../scss/globals/shared";
+
+.bi-popup {
+  &__bg {
+    @include fixed-size(100%, 100vh);
+    @include add-transition(300ms);
+    z-index: 1;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: white;
+    opacity: 0;
+    &.visible {
+      pointer-events: all;
+      opacity: 0.8;
+    }
+  }
+  &__container {
+    min-width: 400px;
+    max-width: 600px;
+    @include add-transition(300ms);
+    z-index: 2;
+    display: flex;
+    flex-flow: column nowrap;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform-origin: center center;
+    transform: translate(-50%, -50%) perspective(1px) scale(0.5);
+    padding: 32px;
+    background: white;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    pointer-events: none;
+    &.visible {
+      pointer-events: all;
+      opacity: 1;
+      transform: translate(-50%, -50%) perspective(1px) scale(1);
+    }
+  }
+  &__title {
+    font-size: 20px;
+    padding-bottom: 32px;
+  }
+  &__content {
+    padding-bottom: 32px;
+  }
+  &__output {
+    display: flex;
+    padding-bottom: 32px;
+    width: 100%;
+  }
+}

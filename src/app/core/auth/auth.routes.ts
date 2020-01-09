@@ -2,7 +2,7 @@ import { VerifyEmailDoneComponent } from "./pages/verify-email-done/verify-email
 import { VerifyEmailRequestComponent } from "./pages/verify-email-request/verify-email-request.component";
 import { Routes } from "@angular/router";
 import { LoginPageComponent } from "./pages/login-page/login-page.component";
-import { AuthComponent } from "./component/auth.component";
+import { AuthComponent } from "./components/auth.component";
 import { Page404Component } from "src/app/shared/pages/page404/page404.component";
 import { SignUpPageComponent } from "./pages/sign-up-page/sign-up-page.component";
 

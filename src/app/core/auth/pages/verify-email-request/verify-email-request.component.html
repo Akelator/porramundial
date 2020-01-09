@@ -1,1 +1,6 @@
-<p>verify-email-request works!</p>
+<ng-container *ngIf="userData">
+  <div class="info">
+    hemos enviado un email de verificación a tú cuenta de correo {{userData.email}}
+  </div>
+  <button (click)="onResend()">REENVIAR EMAIL</button>
+</ng-container>

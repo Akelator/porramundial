@@ -1,1 +1,5 @@
-<p>verify-email-done works!</p>
+<ng-container *ngIf="userData">
+  <div class="info">
+    se ha verificado correctamente tu cuenta de correo {{userData.email}}
+  </div>
+</ng-container>

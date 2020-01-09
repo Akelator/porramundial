@@ -1,6 +1,7 @@
+import { Observable } from "rxjs";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { AuthService } from "../../auth.service";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: "login-page",
@@ -8,17 +9,20 @@ import { AuthService } from "../../auth.service";
   styleUrls: ["./login-page.component.scss"]
 })
 export class LoginPageComponent implements OnInit {
+  errors$: Observable<{ mail: string; pass: string }>;
+
   registerForm = this.formBuilder.group({
     email: [null, Validators.required],
     password: [null, Validators.required]
   });
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService
-  ) {}
-
-  errorMessage: string;
-  successMessage: string;
+  ) {
+    this.authService.clearErrors();
+    this.errors$ = this.authService.errors$;
+  }
 
   ngOnInit() {}
 
@@ -30,18 +34,7 @@ export class LoginPageComponent implements OnInit {
     return this.registerForm.get("password");
   }
 
-  tryRegister() {
-    this.authService.SignIn(this.email.value, this.password.value).then(
-      res => {
-        console.log(res);
-        this.errorMessage = "";
-        this.successMessage = "Your account has been created";
-      },
-      err => {
-        console.log(err);
-        this.errorMessage = err.message;
-        this.successMessage = "";
-      }
-    );
+  onLogin() {
+    this.authService.SignIn(this.email.value, this.password.value);
   }
 }
