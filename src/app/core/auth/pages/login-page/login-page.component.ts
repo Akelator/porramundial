@@ -2,13 +2,15 @@ import { Observable } from "rxjs";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { AuthService } from "../../services/auth.service";
+import { LangDirective } from "src/app/shared/lang/lang.directive";
+import { LangService } from "src/app/shared/lang/lang.service";
 
 @Component({
   selector: "login-page",
   templateUrl: "./login-page.component.html",
   styleUrls: ["./login-page.component.scss"]
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent extends LangDirective implements OnInit {
   errors$: Observable<{ mail: string; pass: string }>;
 
   registerForm = this.formBuilder.group({
@@ -18,8 +20,10 @@ export class LoginPageComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    public langService: LangService
   ) {
+    super(langService);
     this.authService.clearErrors();
     this.errors$ = this.authService.errors$;
   }

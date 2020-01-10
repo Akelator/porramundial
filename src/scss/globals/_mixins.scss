@@ -14,3 +14,17 @@
   -ms-transition: $time;
   -o-transition: $time;
 }
+
+@mixin add-radius($radius) {
+  border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+}
+
+@mixin responsive-width() {
+  width: $main_width;
+  max-width: $main_width;
+  min-width: $min_width;
+}

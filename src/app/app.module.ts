@@ -1,3 +1,4 @@
+import { AppConfig } from "./app.config";
 import { SharedModule } from "./shared/shared.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -14,7 +15,8 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { RouterModule } from "@angular/router";
 import { routes } from "./app.routes";
 import { AppPreloadingStrategy } from "./app-custom-preloader";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgxWebstorageModule } from "ngx-webstorage";
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,7 +34,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxWebstorageModule.forRoot(AppConfig.ng2WebStorageConfig)
   ],
   providers: [AppPreloadingStrategy],
   bootstrap: [AppComponent]

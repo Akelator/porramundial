@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Validators, FormBuilder } from "@angular/forms";
+import { FormBuilder } from "@angular/forms";
 import { AuthService } from "src/app/core/auth/services/auth.service";
 import { UserSummary } from "src/app/core/auth/models/user";
 import { Router } from "@angular/router";
@@ -24,12 +24,18 @@ export class ProfilePageComponent implements OnInit {
     private router: Router
   ) {}
 
+  items;
+
   ngOnInit() {
     this._sub = this.authService.userData$.subscribe(userData => {
       this.updateUserData(userData);
       if (!userData) {
         this.router.navigate([""]);
       }
+    });
+    this.authService.getItemsList().subscribe(items => {
+      this.items = items;
+      console.log(this.items);
     });
   }
 

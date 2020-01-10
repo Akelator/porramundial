@@ -17,16 +17,16 @@
   </div> -->
   <mat-form-field class="example-full-width">
     <input matInput
-           placeholder="email"
+           placeholder="{{txt.email}}"
            formControlName="email">
   </mat-form-field>
   <mat-form-field class="example-full-width">
     <input matInput
            type="password"
-           placeholder="password"
+           placeholder="{{txt.password}}"
            formControlName="password">
   </mat-form-field>
   <button type="submit"
           (click)="onLogin()"
-          class="btn btn-default">ACCEDER</button>
+          class="btn btn-default">{{txt.login}}</button>
 </form>

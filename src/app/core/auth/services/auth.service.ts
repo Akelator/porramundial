@@ -1,3 +1,4 @@
+import { BrowserStorageService } from "./../../browser-storage/browser-storage.service";
 import { UserSummary } from "../models/user";
 import { Injectable, NgZone } from "@angular/core";
 import { auth, User } from "firebase/app";
@@ -7,7 +8,7 @@ import {
   AngularFirestoreDocument
 } from "@angular/fire/firestore";
 import { Router } from "@angular/router";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Observable, of } from "rxjs";
 import { PopupService } from "src/app/shared/components/popup/popup.service";
 
 @Injectable({
@@ -30,7 +31,9 @@ export class AuthService {
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
     public ngZone: NgZone, // NgZone service to remove outside scope warning
-    private popupService: PopupService
+    private popupService: PopupService,
+    private browserStorageService: BrowserStorageService,
+    private db: AngularFirestore
   ) {
     /* Saving user data in localstorage when
     logged in and setting up null when logged out */
@@ -38,11 +41,12 @@ export class AuthService {
       if (user) {
         this.user = user;
         this._userData$.next(user);
-        localStorage.setItem("user", JSON.stringify(this._userData$.value));
-        JSON.parse(localStorage.getItem("user"));
+        this.browserStorageService.volatile.store("user", this.user);
+        this.getUserProperties().subscribe(props => {
+          this.userProperties = props;
+        });
       } else {
-        localStorage.setItem("user", null);
-        JSON.parse(localStorage.getItem("user"));
+        this.browserStorageService.volatile.store("user", null);
       }
     });
   }
@@ -104,7 +108,7 @@ export class AuthService {
 
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = this.browserStorageService.volatile.retrieve("user");
     return user !== null && user.emailVerified !== false ? true : false;
   }
 
@@ -163,7 +167,7 @@ export class AuthService {
   // Sign out
   SignOut() {
     return this.afAuth.auth.signOut().then(() => {
-      localStorage.removeItem("user");
+      this.browserStorageService.volatile.clear("user");
       this._userData$.next(null);
       this.router.navigate([""]);
     });
@@ -200,5 +204,18 @@ export class AuthService {
 
   clearErrors() {
     this._errors$.next({ mail: null, pass: null });
+  }
+
+  userProperties;
+
+  getUserProperties(): Observable<any> {
+    return this.db
+      .collection(`user-data`)
+      .doc(this.user.uid)
+      .valueChanges();
+  }
+
+  createItem(item) {
+    this.userProperties.push(item);
   }
 }

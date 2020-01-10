@@ -9,11 +9,14 @@
 }
 
 tool-bar {
-  @include fixed-size(100%, 60px);
+  @include fixed-size(100%, #{$size_toolbar});
   z-index: 1;
 }
 
 .content {
-  @include fixed-size(100%, calc(100% - 60px));
+  height: calc(100% - #{$size_toolbar});
+  @include responsive-width();
+  background-color: $white;
+  box-shadow: $shadow_page;
   z-index: 0;
 }

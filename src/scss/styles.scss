@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -19,7 +18,11 @@ $porramundial-accent: mat-palette($mat-pink, A200, A100, A400);
 $porramundial-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$porramundial-theme: mat-light-theme($porramundial-primary, $porramundial-accent, $porramundial-warn);
+$porramundial-theme: mat-light-theme(
+  $porramundial-primary,
+  $porramundial-accent,
+  $porramundial-warn
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -31,5 +34,11 @@ $porramundial-theme: mat-light-theme($porramundial-primary, $porramundial-accent
 @import "globals/main";
 @import "globals/fonts.scss";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// html,
+// body {
+//   height: 100%;
+// }
+// body {
+//   margin: 0;
+//   font-family: Roboto, "Helvetica Neue", sans-serif;
+// }

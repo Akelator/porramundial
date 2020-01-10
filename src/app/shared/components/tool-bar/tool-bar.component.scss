@@ -5,16 +5,111 @@
   align-items: center;
   justify-content: center;
   @include fixed-size(100%, 100%);
-  background: $bg_red;
+  background: $color_first;
+  font-size: 0.8em;
+}
+.title {
+  font-family: SoccerLeague;
+  font-size: 2em;
+  letter-spacing: 0.05em;
+  line-height: 0;
+  & .scnd {
+    opacity: 0.7;
+  }
 }
 .toolbar-content {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @include fixed-size($main_width, 100%);
+  @include responsive-width();
+
+  height: 100%;
   color: white;
 }
+.toolbar-actions {
+  display: flex;
+}
 .profile-img {
-  width: 40px;
-  height: 40px;
+  width: 22px;
+  height: 22px;
+  border: 1px solid $white;
+  background-color: $white;
+  @include add-radius(20px);
+  overflow: hidden;
+  position: relative;
+  margin-right: 8px;
+  & img {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+  }
+}
+.user-settings-btn {
+  & svg {
+    fill: $white;
+  }
+}
+.user-settings {
+  position: absolute;
+  top: calc(#{$size_toolbar} + 3px);
+  right: 0px;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 0px;
+  padding: 0 0 0 0;
+  @include add-radius(0);
+  box-shadow: none;
+  border: 1px solid $transparent;
+
+  &.toggled {
+    height: calc(#{$size_user-setting} * 3 + 12px);
+    padding: 5px 0 5px 0;
+    box-shadow: $shadow_dropdown;
+    @include add-radius(3px);
+    border: 1px solid $border-1;
+    & .setting {
+      pointer-events: all !important;
+      opacity: 1 !important;
+    }
+  }
+  @include add-transition(300ms);
+  background-color: $white;
+  overflow: hidden;
+
+  & .setting {
+    @include add-transition(100ms);
+    pointer-events: none;
+    opacity: 0;
+    height: $size_user-setting;
+    min-height: $size_user-setting;
+    max-height: $size_user-setting;
+
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+    padding-left: 15px;
+    background-color: $white;
+    color: $black;
+    cursor: pointer;
+    &:hover {
+      background-color: $color_first;
+      color: $white;
+      & .icon {
+        & svg {
+          fill: $white;
+        }
+      }
+    }
+    & .icon {
+      margin-right: 8px;
+      display: flex;
+      @include fixed-size(22px, 22px);
+      align-items: center;
+      justify-content: center;
+      & svg {
+        fill: $black;
+      }
+    }
+  }
 }

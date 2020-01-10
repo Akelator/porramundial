@@ -1,14 +1,16 @@
+import { LangService } from "./../../../../shared/lang/lang.service";
 import { Component, OnInit } from "@angular/core";
 import { Validators, FormBuilder } from "@angular/forms";
 import { AuthService } from "../../services/auth.service";
 import { Observable } from "rxjs";
+import { LangDirective } from "src/app/shared/lang/lang.directive";
 
 @Component({
   selector: "sign-up-page",
   templateUrl: "./sign-up-page.component.html",
   styleUrls: ["./sign-up-page.component.scss"]
 })
-export class SignUpPageComponent implements OnInit {
+export class SignUpPageComponent extends LangDirective implements OnInit {
   errors$: Observable<{ mail: string; pass: string }>;
 
   registerForm = this.formBuilder.group({
@@ -18,8 +20,10 @@ export class SignUpPageComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    public langService: LangService
   ) {
+    super(langService);
     this.authService.clearErrors();
     this.errors$ = this.authService.errors$;
   }

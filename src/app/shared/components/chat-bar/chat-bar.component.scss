@@ -1,0 +1,11 @@
+@import "../../../../scss/globals/shared";
+
+:host {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  @include fixed-size(240px, calc(100% - #{$size_toolbar}));
+  display: flex;
+  flex-flow: column nowrap;
+  background: white;
+}

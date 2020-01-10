@@ -7,4 +7,17 @@ body {
   overflow: hidden !important;
   -webkit-font-smoothing: antialiased !important;
   user-select: none !important;
+  font-family: robotoRegular;
+  background-color: $main_bg;
+}
+
+button {
+  border: none;
+  margin: none;
+  outline: none;
+  &:focus {
+    order: none;
+    margin: none;
+    outline: none;
+  }
 }
