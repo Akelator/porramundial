@@ -14,6 +14,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { RouterModule } from "@angular/router";
 import { routes } from "./app.routes";
 import { AppPreloadingStrategy } from "./app-custom-preloader";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +31,8 @@ import { AppPreloadingStrategy } from "./app-custom-preloader";
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule
   ],
   providers: [AppPreloadingStrategy],
   bootstrap: [AppComponent]
